@@ -1,0 +1,73 @@
+
+<div class="content-box" >
+    <h2>#i18n{wrapper.manage_wrapper.tableLabel}</h2>
+    <form method="post" rm action="jsp/admin/plugins/wrapper/ManageWrapper.jsp">
+     <@pagination paginator=paginator />
+        
+        <!-- Number of contact per page selector -->
+        #i18n{wrapper.manage_wrapper.labelItemsPerPage} :
+        <select name="items_per_page">
+            <#list [ "10" , "20" , "50" , "100" ] as nb>
+            <#if nb_items_per_page = nb >
+            <option selected="selected" value="${nb}">${nb}</option>
+            <#else>
+            <option value="${nb}">${nb}</option>
+            </#if>
+            </#list>
+        </select>
+        <input type="submit" class="button" value="#i18n{wrapper.manage_wrapper.buttonItemsPerPage}" />
+    </form>   
+    
+    <table>
+        <tr>
+            <th width="40%">#i18n{wrapper.manage_wrapper.columnTitleLabel}</th>
+            <th width="20%">#i18n{wrapper.manage_wrapper.columnTitleStatus}</th>
+            <th width="20%">#i18n{wrapper.manage_wrapper.workgroup}</th>
+            <th width="10%">&#160;</th>
+            <th width="10%">#i18n{wrapper.manage_wrapper.columnTitleActions}</th>
+        </tr>
+        
+        <#list wrapper_list as wrapper >
+        
+        <tr>
+            <td>
+                <a href="jsp/admin/plugins/wrapper/ModifyWrapper.jsp?id_wrapper=${wrapper.id}" class="bullet-link">
+                    ${wrapper.description}
+                </a>
+            </td>
+            <td>
+                <#if wrapper.status == 0 >
+                <img src="images/admin/skin/enable.png" alt="#i18n{wrapper.manage_wrapper.statusLabelEnabled}" />
+                <#else>
+                <img src="images/admin/skin/disable.png" alt="#i18n{wrapper.manage_wrapper.statusLabelDisabled}" />
+                </#if>				
+            </td>
+            <td>
+                ${wrapper.workgroup}
+            </td>     
+            <td  align="right">
+                <form method="post" action="jsp/admin/plugins/wrapper/DoDuplicateWrapper.jsp">
+                    <input type="hidden" name="id_wrapper" description="id_wrapper" value="${wrapper.id}"/>
+                    <input src="images/admin/skin/actions/duplicate.png" style="border: 0pt none ; vertical-align: bottom;" alt="#i18n{wrapper.manage_wrapper.actionDuplicate}" title="#i18n{wrapper.manage_wrapper.actionDuplicate}"  type="image">
+                </form>    
+            </td>
+            <td align="left">
+                <form method="post" action="jsp/admin/plugins/wrapper/RemoveWrapper.jsp">
+                    <input type="hidden" name="id_wrapper" description="id_wrapper" value="${wrapper.id}"/>
+                    <input type="hidden" name="description" description="description" value="${wrapper.description}"/>
+                    <input src="images/admin/skin/actions/delete.png" style="border: 0pt none ; vertical-align: bottom;" alt="#i18n{wrapper.manage_wrapper.actionDelete}" title="#i18n{wrapper.manage_wrapper.actionDelete}"  type="image">
+                </form>     
+            </td>
+        </tr>					
+        </#list>
+        
+    </table>
+    
+    <form method="post"  action="jsp/admin/plugins/wrapper/CreateWrapper.jsp">
+        <input type="submit" value="#i18n{wrapper.manage_wrapper.buttonAddWrapper}" class="button" />
+    </form>
+    
+</div>
+
+
+
