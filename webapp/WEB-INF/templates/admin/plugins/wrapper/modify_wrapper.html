@@ -1,54 +1,64 @@
-<div class="content-box" >
-    
-    <h2>#i18n{wrapper.modify_wrapper.tableLabel}</h2>
-    
-    <form method="post"  name="modify_wrapper" id="modify_wrapper" action="jsp/admin/plugins/wrapper/DoModifyWrapper.jsp">
-        
-        <p>
-        	<label for="description" >#i18n{wrapper.modify_wrapper.rowTitleLabel} * : </label>
-                <input type="hidden" name="id_wrapper" value="${wrapper.id}">
-        	<input type="text" id="description" name="description" size="60" maxlength="50" tabindex="1" value="${wrapper.description}" />
-        </p>
-        <p>
-            <label for="status">#i18n{wrapper.modify_wrapper.labelStatus} :</label>
-            <select id="status" name="status" tabindex="2">
-                <#if wrapper.status == 0 >
-                    <option value="0" selected="selected" >#i18n{wrapper.modify_wrapper.statusLabelEnabled}</option>
-                    <option value="1" >#i18n{wrapper.modify_wrapper.statusLabelDisabled}</option>
-                <#else>
-                    <option value="0" >#i18n{wrapper.modify_wrapper.statusLabelEnabled}</option>
-                    <option value="1" selected="selected" >#i18n{wrapper.modify_wrapper.statusLabelDisabled}</option>
-                </#if> 
-            </select>
-        </p>        
-        <p>
-            <label for="workgroup" >#i18n{wrapper.modify_wrapper.labelWorkgroupKey}*:</label>
-            <@combo name="workgroup" default_value="${wrapper.workgroup}" items=workgroups_list />
-        </p>
-        <p>
-             <label for="role" >#i18n{wrapper.modify_wrapper.labelRole}*:</label>
-            <@combo name="role" default_value="${wrapper.role}" items=roles_list />
-        </p>        
-        <p>
-            <label>#i18n{wrapper.modify_wrapper.labelIFrameUrl}</label>
-            <input type="text" id="wrapper_url" name="wrapper_url" value="${wrapper.wrapperUrl}" size="60" tabindex="2" />
-		   	<br/>
-		    <label>&nbsp;</label>
-			#i18n{wrapper.modify_wrapper.labelIFrameUrlComment}
-        </p>
-        </p>
-        <p>
-            <label>#i18n{wrapper.modify_wrapper.labeIFrameStyle}</label>
-            <input type="text" id="wrapper_styles" name="wrapper_styles" value="${wrapper.wrapperStyles}" size="60" tabindex="3" />
-		   	<br/>
-		    <label>&nbsp;</label>
-			#i18n{wrapper.modify_wrapper.labelIFrameStyleComment}
-        </p>
-        </p>
-        <p>   
-        	<input type="submit" value="#i18n{wrapper.modify_wrapper.buttonModify}" class="button" tabindex="4" />
-        </p>
-        
-    </form>
-    
+<div class="row-fluid" >
+    <div class="span12" >
+        <fieldset>
+            <legend>#i18n{wrapper.modify_wrapper.tableLabel}</legend>
+            <form class="form-horizontal" method="post"  name="modify_wrapper" id="modify_wrapper" action="jsp/admin/plugins/wrapper/DoModifyWrapper.jsp">
+                <input type="hidden" name="id_wrapper" value="${wrapper.id}" />
+                <div class="control-group">
+                    <label class="control-label" for="description" >#i18n{wrapper.modify_wrapper.rowTitleLabel} * : </label>
+                    <div class="controls">
+                        <input type="text" id="description" name="description" class="input-large" maxlength="50" tabindex="1" value="${wrapper.description}" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="status">#i18n{wrapper.modify_wrapper.labelStatus}</label>
+                    <div class="controls">
+                        <select id="status" name="status" tabindex="2">
+                            <#if wrapper.status == 0 >
+                            <option value="0" selected="selected" >#i18n{wrapper.modify_wrapper.statusLabelEnabled}</option>
+                            <option value="1" >#i18n{wrapper.modify_wrapper.statusLabelDisabled}</option>
+                            <#else>
+                            <option value="0" >#i18n{wrapper.modify_wrapper.statusLabelEnabled}</option>
+                            <option value="1" selected="selected" >#i18n{wrapper.modify_wrapper.statusLabelDisabled}</option>
+                            </#if> 
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="workgroup" >#i18n{wrapper.modify_wrapper.labelWorkgroupKey}*:</label>
+                    <div class="controls">
+                        <@combo name="workgroup" default_value="${wrapper.workgroup}" items=workgroups_list />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="role" >#i18n{wrapper.modify_wrapper.labelRole}*:</label>
+                    <div class="controls">
+                        <@combo name="role" default_value="${wrapper.role}" items=roles_list />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" > #i18n{wrapper.modify_wrapper.labelIFrameUrl}</label>
+                    <div class="controls">
+                        <input type="text" id="wrapper_url" name="wrapper_url" value="${wrapper.wrapperUrl}" class="input-xxlarge" tabindex="2" />
+                        <span class="help-block">#i18n{wrapper.modify_wrapper.labelIFrameUrlComment}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" > #i18n{wrapper.modify_wrapper.labeIFrameStyle}</label>
+                    <div class="controls">
+                        <input type="text" id="wrapper_styles" name="wrapper_styles" value="${wrapper.wrapperStyles}" class="input-large" tabindex="3" />
+                        <span class="help-block">#i18n{wrapper.modify_wrapper.labelIFrameStyleComment}</span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-small" type="submit" >
+                         <i class="icon-ok icon-white"></i>&nbsp;#i18n{wrapper.modify_wrapper.buttonModify}
+                    </button>
+                    <a class="btn btn-small" href="jsp/admin/plugins/wrapper/ManageWrapper.jsp" name="cancel" >
+                        <i class="icon-remove-circle"></i>&nbsp;#i18n{portal.util.labelCancel}
+                    </a>
+                </div> 
+            </form>
+        </fieldset>
+    </div>
 </div>
