@@ -39,6 +39,12 @@
             <application-class>fr.paris.lutece.plugins.wrapper.web.WrapperApp</application-class>
         </application>
     </applications>
+	
+	<!-- Specific plugin CSS stylesheet -->
+    <css-stylesheets>
+        <css-stylesheets-scope>portal</css-stylesheets-scope>
+        <css-stylesheet>wrapper/wrapper.css</css-stylesheet>
+    </css-stylesheets>
 
     
 </plug-in>
